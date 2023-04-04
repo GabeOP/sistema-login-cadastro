@@ -1,5 +1,6 @@
 const Usuario = require("../model/Usuario");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const Controller = {
   buscar: async (req, res) => {
@@ -40,6 +41,25 @@ const Controller = {
   entrar: async(req, res) =>{
     const { email, senha } = req.body;
 
+    //====Uso do JWT====//
+    const generateToken = () => jwt.sign({email, senha}, "123", {expiresIn: 1800});
+    const {authorization} = req.headers;
+    const parts = authorization.split(" ");
+    const [schema, tkn] = parts
+    
+    if(parts !== 2) {
+      return res.send(401)
+    }
+
+    if(schema !== "Bearer") {
+      return res.send(401)
+    }
+
+    if(!authorization){
+      return res.status(401).json({msg:"er"})
+    }
+    //============//
+
     if(!email || !senha){
       return res.status(422).json({msg: "Preencha todos os campos."})
     }
@@ -53,7 +73,9 @@ const Controller = {
     if(!verificaSenha){
       return res.status(422).json({msg: "Senha incorreta."})
     }
-    return res.status(200).json({msg: "Login realizado com sucesso!"})
+
+    const token = generateToken({email, senha})
+    res.status(200).json({token})
   },
 
   excluir: async (req, res) => {
