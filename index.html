@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div id="fundoAll"></div>
+  <div id="successBox">
+    <img src="./img/smiling.png" alt="">
+    <h2>Tudo certo!</h2>
+    <p>seu e-mail foi cadastrado com sucesso.</p>
+    <button id="fecharSuccessBox">Fechar</button>
+  </div>
+
+  <div id="wrapGeral">
+    <div id="wrapCadastro">
+      <h1>Cadastro</h1>
+      <form id="formCadastro">
+        <div>
+          <label for="email">Digite o seu email</label>
+          <input type="email" name="email" id="emailCadastro">
+        </div>
+        <div>  
+          <label for="senha">Digite a sua senha</label>
+          <input type="password" name="senha" id="senhaCadastro">
+        </div>
+        <input type="submit" value="Cadastrar" id="confirmaCadastro">
+        <p id="errorMsgC"></p>
+      </form>
+    </div>
+  
+    <div id="wrapLogin">
+      <h1>Login</h1>
+      <form id="formLogin">
+        <div>
+          <label for="name">Digite o seu nome</label>
+          <input type="email" name="name" id="emailLogin">
+        </div>
+        <div>
+          <label for="password">Digite a sua senha</label>
+          <input type="password" name="password" id="senhaLogin">
+        </div>
+        <input type="submit" value="Entrar" id="confirmaLogin">
+        <p id="errorMsgL"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

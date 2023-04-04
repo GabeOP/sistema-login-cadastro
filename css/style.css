@@ -1,0 +1,124 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family:sans-serif;
+}
+body{
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#fundoAll{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.562);
+  position:absolute;
+  visibility:hidden;
+}
+#successBox{
+  width: 90vw;
+  max-width: 400px  ;
+  height: 336px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  position:absolute;
+  z-index: 9999;
+  border-radius: 5px;
+  visibility: hidden;
+}
+#successBox h2{
+  color: #61c779;
+}
+#successBox p {
+  font-weight: 600;
+  color: rgb(119, 119, 119)
+}
+#successBox button{
+  width: 30%;
+  height: 36px;
+  margin-top: 86px;
+  background-color: #61c779;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-bottom: 3px solid #4ca360;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#errorMsgC, #errorMsgL {
+  color: #fa3c3c;
+  text-align: center;
+}
+
+#wrapGeral{
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+  width: 100%;
+  max-width: 750px;
+  padding: 20px;
+}
+
+#wrapLogin, #wrapCadastro{
+  background-color: #f6f6f6;
+  border: 2px solid #8fc1c9;
+  border-radius: 3px;
+  color:#076a75;
+  padding: 20px;
+}
+
+input{
+  padding: 6px;
+  border: 2px solid #d8d8d8;
+  border-radius: 3px;
+}
+#formLogin div, #formCadastro div{
+  display: flex;
+  flex-direction: column;
+}
+
+#formLogin, #formCadastro{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#formCadastro{
+  display: flex;
+  flex-direction: column;
+}
+
+#confirmaCadastro, #confirmaLogin{
+  margin-top: 7px;
+  background-color: #3d9db3;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+@media (min-width: 1000px){
+  #successBox{
+    width: 500px;
+  }
+  #wrapGeral{
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 60%;
+  }
+  #wrapLogin, #wrapCadastro{
+    height: 350px;
+    width: 400px;
+  }
+  #wrapLogin h1, #wrapCadastro h1{
+    margin-bottom: 40px;
+  }
+}
