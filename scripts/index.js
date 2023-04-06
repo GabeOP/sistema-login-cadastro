@@ -85,6 +85,8 @@ formLogin.addEventListener("submit", (e) => {
       
       const token = await res.json()
       localStorage.setItem("token", token.token)
+      document.cookie = `token = ${token.token}`
+      localStorage.setItem("email", data.email)
       location.replace("usuario.html");
     }
   });
