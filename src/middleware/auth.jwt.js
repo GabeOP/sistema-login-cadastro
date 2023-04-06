@@ -20,9 +20,7 @@ const auth = {
         return res.status(401).json({ msg: "Acesso negado" });
       }
 
-      jwt.verify(token, "123", async (error, decoded) => {
-        console.log(decoded);
-      });
+      jwt.verify(token, "123")
 
       next();
     } catch (error) {
