@@ -2,7 +2,7 @@ const Usuario = require("../model/Usuario");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const Controller = {
+const usuarioController = {
   buscar: async (req, res) => {
     try {
       const resultado = await Usuario.findAll();
@@ -57,8 +57,7 @@ const Controller = {
 
     const generateToken = () => jwt.sign({email, senha}, "123", {expiresIn: 1800});
     const token = generateToken()
-
-    res.status(200).header('Authorization', `Bearer ${token}`).json({token})
+    res.status(200).json({token, email})
   },
 
   excluir: async (req, res) => {
@@ -78,4 +77,4 @@ const Controller = {
   },
 };
 
-module.exports = Controller;
+module.exports = usuarioController;
