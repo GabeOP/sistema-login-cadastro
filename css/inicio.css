@@ -33,11 +33,11 @@ body{
   max-width: 820px;
 }
 
-#criaNoticia{
+#dashboard{
   padding: 4px 16px;
   border: 1px solid black;
 }
-#criaNoticia:hover{
+#dashboard:hover{
   background-color: #dadada;
 }
 
