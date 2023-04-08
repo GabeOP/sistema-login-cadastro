@@ -47,7 +47,6 @@ formCadastro.addEventListener("submit", (e) => {
     .catch((error) => console.log(error));
 });
 
-
 //===Parte que cuida do LOGIN de usuários===//
 const formLogin = document.getElementById("formLogin");
 const emailLogin = document.getElementById("emailLogin");
@@ -67,11 +66,11 @@ formLogin.addEventListener("submit", (e) => {
     email: emailLogin.value,
     senha: senhaLogin.value,
   };
-  
+
   fetch("http://localhost:3000/entrar", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   }).then(async (res) => {
@@ -82,12 +81,11 @@ formLogin.addEventListener("submit", (e) => {
       return (document.getElementById("errorMsgL").innerText =
         "E-mail não cadastrado.");
     } else if (res.ok) {
-      
-      const token = await res.json()
-      localStorage.setItem("token", token.token)
-      document.cookie = `token = ${token.token}`
-      localStorage.setItem("email", data.email)
-      location.replace("usuario.html");
+      const token = await res.json();
+      localStorage.setItem("token", token.token);
+      document.cookie = `token = ${token.token}`;
+      localStorage.setItem("email", data.email);
+      location.replace("inicio.html");
     }
   });
 });
