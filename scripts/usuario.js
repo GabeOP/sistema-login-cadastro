@@ -10,21 +10,46 @@ const dataEmail = localStorage.getItem("email")
 emailUsuario.innerHTML = `Usuário conectado com o e-mail <strong>${dataEmail}</strong>`
 
 
-//====Cuida da parte do editar====//
-const editaInfo = document.getElementById("editar")
-editaInfo.addEventListener("click", ()=> {
-  fetch("http://localhost:3000/",{
-    method: "GET",
-    headers: {
-      "Authorization": `Bearer ${token}`
-    }
+//====Cuida da parte de POSTS====//
+const wrapNoticias = document.getElementById("wrapNoticias");
+const noticias = document.getElementById("noticias");
+const noticia = document.getElementById("noticia");
+
+fetch("http://localhost:3000/noticia",{
+  method: "GET",
+  headers:{
+    "Authorization": `Bearer ${token}`
+  }
+}).then(async res=>{
+  const postagens = await res.json();
+
+  if(postagens.resultado.length === 0){
+    const semConteudoWrap = document.getElementById("semConteudoWrap");
+    semConteudoWrap.style.display = "block"
+  }
+  postagens.resultado.forEach(item=>{
+
+    //Cria uma nested div para cada elemento e cria também elementos dentro
+    const div = document.createElement("div")
+    div.setAttribute("id", "noticia")
+    
+    const criaNoticias = noticias.appendChild(div);
+    const img = document.createElement("div");
+    const p = document.createElement("p");
+
+    img.setAttribute("id", "imgNoticia")
+    p.setAttribute("id", "tituloNoticia")
+    criaNoticias.appendChild(img)
+    criaNoticias.appendChild(p)
+
+    p.innerHTML = (item.titulo)   
   })
-  .then(async res => {
-    if(res.ok){
-      console.log(await res.json())
-      location.assign("config.html")
-    }
-  })
+})
+
+//====Cuida da parte do dashboard====//
+const dashboard = document.getElementById("dashboard")
+dashboard.addEventListener("click", ()=>{
+  location.assign("novaNoticia.html")
 })
 
 //====Cuida da parte do logout====//
