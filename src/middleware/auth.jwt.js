@@ -21,10 +21,11 @@ const auth = {
       }
 
       jwt.verify(token, "123")
-
       next();
     } catch (error) {
-      console.log(error);
+      if(error.name === "TokenExpiredError"){
+        return res.status(401).json({msg: "Sessão expirou. Faça o login novamente."})
+      }
     }
   },
 };
