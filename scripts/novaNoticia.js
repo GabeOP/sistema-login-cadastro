@@ -9,7 +9,14 @@ const formNoticia = document.getElementById("formNoticia");
 
 fetch("http://localhost:3000/noticia", {
   method: "GET",
+  headers: {
+    "Authorization": `Bearer ${token}`
+  }
 }).then(async (res) => {
+  if(res.status === 401){
+    alert("Sua sessão expirou. Faça o login novamente!");
+    location.replace("index.html")
+  }
   const noticias = await res.json();
   const listaNoticias = document.getElementById("listaNoticias");
 
