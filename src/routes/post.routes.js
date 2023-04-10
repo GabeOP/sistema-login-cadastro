@@ -3,7 +3,7 @@ const router = express.Router();
 const PostsController = require("../controllers/Posts.controller")
 const auth = require("../middleware/auth.jwt");
 
-router.get("/noticia", PostsController.buscar)
+router.get("/noticia", auth.jsonwebtoken, PostsController.buscar)
 router.post("/noticia", auth.jsonwebtoken, PostsController.criar)
 router.delete("/noticia/:id", PostsController.deletar)
 
